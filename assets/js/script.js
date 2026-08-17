@@ -1,6 +1,6 @@
 const CONFIG = {
   weddingDate: "2026-09-26T10:00:00+07:00",
-  whatsappNumber: "6281234567890" // GANTI dengan nomor WhatsApp tujuan RSVP
+  whatsappNumber: "6285729583211" // GANTI dengan nomor WhatsApp tujuan RSVP
 };
 
 const params = new URLSearchParams(window.location.search);
