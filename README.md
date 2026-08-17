@@ -1,2 +1,2 @@
-# wedding.github.io
+# wedding.invitation
 Wedding Invitation
