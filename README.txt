@@ -1,41 +1,40 @@
-TEMPLATE UNDANGAN DIGITAL — AGUNG & EFARNA
+TEMPLATE UNDANGAN DIGITAL — AGUNG & EFARNA (PEMBARUAN)
 
-1. Upload seluruh isi folder ini ke hosting.
-   Untuk Cloudflare Pages, upload/deploy folder sebagai static site.
+Isi versi ini:
+- Background cover adat Jawa sudah dipasang: assets/images/background-jawa.png
+- Font nama "Agung & Efarna" sudah menggunakan Great Vibes
+- Parameter penerima ?to= tetap aktif
+- Countdown 26 September 2026
+- RSVP WhatsApp
+- Google Maps
+- Musik
+- Gallery placeholder
+- Animasi scroll
+- Responsive untuk HP
+- Static website, tanpa database/PHP
 
-2. Struktur:
-   index.html
-   assets/css/style.css
-   assets/js/script.js
-   assets/music/wedding.mp3
-   assets/images/ (untuk foto jika ditambahkan)
+UPLOAD KE CLOUDFLARE PAGES:
+Upload seluruh isi folder ini. Pastikan index.html berada di level paling atas.
 
-3. NAMA PENERIMA DINAMIS
-   Contoh:
-   https://domainkamu.com/?to=Mas+Agung+Kurniyanto
+CONTOH:
+https://domainkamu.com/?to=Mas+Agung+Kurniyanto
 
-   Nama setelah ?to= akan otomatis tampil di cover.
+FOTO:
+Masukkan foto ke assets/images/ dan ganti placeholder di index.html.
 
-4. FOTO
-   Template saat ini memakai placeholder.
-   Ganti elemen placeholder di index.html dengan:
-   <img src="assets/images/nama-file.jpg" alt="...">
+MUSIK:
+Masukkan file MP3 sebagai assets/music/wedding.mp3
 
-5. MUSIK
-   Masukkan file:
-   assets/music/wedding.mp3
+WHATSAPP:
+Edit assets/js/script.js dan ganti:
+whatsappNumber:"6281234567890"
+dengan nomor tujuan RSVP tanpa tanda +.
 
-6. WHATSAPP RSVP
-   Buka:
-   assets/js/script.js
-   Cari:
-   whatsappNumber: "6281234567890"
-   Ganti dengan nomor WhatsApp tujuan dalam format internasional tanpa +.
+BACKGROUND:
+Jika ingin mengganti lagi, letakkan gambar baru di assets/images/ lalu ubah:
+background-image:url("../images/background-jawa.png");
+di assets/css/style.css.
 
-7. GOOGLE MAPS
-   Link lokasi saat ini adalah pencarian "GKJ Karangbendo".
-   Setelah alamat/link Google Maps final tersedia, ganti href pada tombol "Lihat Lokasi".
-
-8. CATATAN
-   Template ini dibuat sebagai static website sehingga tidak membutuhkan database atau PHP.
-   Parameter ?to= diproses langsung oleh JavaScript di browser.
+FONT:
+Nama mempelai memakai Google Fonts "Great Vibes".
+Teks lainnya memakai Cormorant Garamond dan Montserrat.
