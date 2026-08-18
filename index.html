@@ -1,87 +1,247 @@
 <!doctype html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Undangan Pernikahan Agung Kurniyanto & Efarna Distalia Sari">
-<title>Agung & Efarna — The Wedding</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#7e6547" />
+  <meta name="description" content="Undangan Pernikahan Agung & Efar — 26 September 2026" />
+  <title>Agung & Efar | Wedding Invitation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body>
-<div id="loading"><div class="spinner"></div></div>
+<body class="locked">
+  <section id="cover" class="cover" aria-label="Cover undangan">
+    <div class="cover-overlay"></div>
+    <div class="cover-card reveal visible">
+      <p class="eyebrow">The Wedding of</p>
+      <h1 class="script hero-script">Agung & Efar</h1>
+      <p class="date-line">Sabtu, 26 September 2026</p>
+      <div class="divider"><span>✦</span></div>
+      <p class="guest-label">Kepada Yth.</p>
+      <h2 id="guestName" class="guest-name">Nama Tamu Undangan</h2>
+      <p class="guest-note">Mohon maaf apabila ada kesalahan penulisan nama atau gelar.</p>
+      <button id="openInvitation" class="primary-button" type="button">
+        <span>✉</span> Buka Undangan
+      </button>
+    </div>
+  </section>
 
-<section id="cover" class="cover">
-<div class="parallax-bg"></div><div class="cover-overlay"></div>
-<div class="cover-content">
-<p class="eyebrow">THE WEDDING OF</p>
-<h1 class="script">Agung &amp; Efarna</h1>
-<p class="date">26 · 09 · 2026</p>
-<div class="recipient"><small>Kepada Yth.</small><strong id="recipientName">Tamu Undangan</strong></div>
-<button id="openInvitation" class="btn">Buka Undangan</button>
-</div>
-</section>
+  <main id="invitation" class="invitation" aria-hidden="true">
+    <section class="section intro-section">
+      <div class="section-inner reveal">
+        <p class="eyebrow">Dengan penuh sukacita</p>
+        <h2 class="script section-script">Agung & Efar</h2>
+        <p class="lead-text">Dengan mengucap syukur atas kasih dan penyertaan Tuhan, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan memberikan doa restu dalam ibadah pemberkatan pernikahan kami.</p>
+      </div>
+    </section>
 
-<main id="main" class="hidden">
-<section class="section"><div class="parallax-bg"></div><div class="section-overlay"></div>
-<div class="container reveal"><p class="eyebrow">WE ARE GETTING MARRIED</p>
-<h2 class="script">Agung &amp; Efarna</h2>
-<p class="quote">“Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia.”</p>
-<p class="verse">Matius 19:6</p></div></section>
+    <section class="section couple-section">
+      <div class="section-inner">
+        <p class="eyebrow reveal">The Bride & Groom</p>
+        <h2 class="section-title reveal">Mempelai</h2>
 
-<section class="section"><div class="parallax-bg"></div><div class="section-overlay"></div>
-<div class="container"><p class="eyebrow reveal">THE BRIDE &amp; GROOM</p>
-<div class="couple">
-<article class="person reveal"><div class="photo">Foto Mempelai Pria</div><h3>Agung Kurniyanto</h3>
-<p>Putra dari<br><b>Bapak Sumantri &amp; Ibu Moeryani</b></p>
-<div class="social"><a href="#" target="_blank">Instagram</a><a href="#" target="_blank">Facebook</a></div></article>
-<div class="script amp">&amp;</div>
-<article class="person reveal"><div class="photo">Foto Mempelai Wanita</div><h3>Efarna Distalia Sari</h3>
-<p>Putri dari<br><b>Bapak Y. Sudaryanto Sari Wiyono (†) &amp; Ibu Kristania Supani</b></p>
-<div class="social"><a href="#" target="_blank">Instagram</a><a href="#" target="_blank">Facebook</a></div></article>
-</div></div></section>
+        <div class="couple-grid">
+          <article class="person-card reveal">
+            <div class="portrait-frame">
+              <img src="assets/img/agung-placeholder.webp" alt="Foto Agung Kurniyanto" loading="lazy" />
+            </div>
+            <h2>AGUNG</h2>
+            <p class="script full-name full-name-script">Agung Kurniyanto</p>
+            <p class="family-text">Putra kedua dari<br><strong>Bapak Sumantri</strong> &amp; <strong>Ibu Moeryani</strong></p>
+            <div class="social-row">
+              <a class="social-button instagram-button" data-social="agung-instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram Agung Kurniyanto">Instagram</a>
+            </div>
+          </article>
 
-<section class="section"><div class="parallax-bg"></div><div class="section-overlay"></div>
-<div class="container reveal"><p class="eyebrow">SAVE THE DATE</p><h2>Pemberkatan Pernikahan</h2>
-<div class="event"><p><small>Tanggal</small><b>Sabtu, 26 September 2026</b></p><p><small>Waktu</small><b>10.00 – 12.00 WIB</b></p><p><small>Tempat</small><b>GKJ Karangbendo</b></p>
-<a class="btn outline" href="https://www.google.com/maps/search/?api=1&query=GKJ+Karangbendo" target="_blank">Google Maps</a></div>
-<p class="note">Setelah ibadah pemberkatan, tidak ada acara resepsi.</p></div></section>
+          <div class="couple-ampersand reveal">&amp;</div>
 
-<section class="section countdown"><div class="parallax-bg"></div><div class="section-overlay dark"></div>
-<div class="container reveal"><p class="eyebrow">COUNTING DOWN TO OUR DAY</p>
-<div class="timer"><div><b id="days">0</b><span>Hari</span></div><div><b id="hours">0</b><span>Jam</span></div><div><b id="minutes">0</b><span>Menit</span></div><div><b id="seconds">0</b><span>Detik</span></div></div></div></section>
+          <article class="person-card reveal">
+            <div class="portrait-frame">
+              <img src="assets/img/efarna-placeholder.webp" alt="Foto Efarna Distalia Sari" loading="lazy" />
+            </div>
+            <h2>EFAR</h2>
+            <p class="script full-name full-name-script">Efarna Distalia Sari</p>
+            <p class="family-text">Putri ketiga dari<br><strong>Bapak Y. Sudaryanto Sari Wiyono (†)</strong> &amp; <strong>Ibu Kristania Supani</strong></p>
+            <div class="social-row">
+              <a class="social-button instagram-button" data-social="efarna-instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram Efarna Distalia Sari">Instagram</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<section class="section"><div class="parallax-bg"></div><div class="section-overlay"></div>
-<div class="container"><p class="eyebrow reveal">OUR MOMENTS</p><h2 class="reveal">Gallery</h2>
-<div class="gallery"><div>Foto 01</div><div>Foto 02</div><div>Foto 03</div><div>Foto 04</div><div>Foto 05</div><div>Foto 06</div></div></div></section>
+    <section class="section verse-section">
+      <div class="section-inner narrow reveal">
+        <div class="quote-mark">“</div>
+        <blockquote>
+          Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia.
+        </blockquote>
+        <p class="verse-ref">Matius 19:6</p>
+      </div>
+    </section>
 
-<section class="section"><div class="parallax-bg"></div><div class="section-overlay"></div>
-<div class="container reveal"><p class="eyebrow">RSVP &amp; UCAPAN</p><h2>Konfirmasi Kehadiran</h2>
-<form id="guestForm">
-<input id="guestName" maxlength="80" placeholder="Nama Anda" required>
-<select id="attendance" required><option value="">Konfirmasi kehadiran</option><option value="Hadir">Hadir</option><option value="Tidak hadir">Tidak hadir</option></select>
-<textarea id="guestMessage" maxlength="500" placeholder="Tulis ucapan selamat..." required></textarea>
-<button class="btn" type="submit">Kirim RSVP &amp; Ucapan</button>
-</form>
-<div id="guestStatus" class="status"></div><div id="guestList" class="guest-list"></div></div></section>
+    <section class="section event-section">
+      <div class="section-inner reveal">
+        <p class="eyebrow">Save The Date</p>
+        <h2 class="script section-script">Wedding Day</h2>
+        <div class="event-card">
+          <div class="calendar-badge">
+            <span class="calendar-day">26</span>
+            <span>September 2026</span>
+          </div>
+          <div class="event-details">
+            <h3>Ibadah Pemberkatan Nikah</h3>
+            <p><strong>Sabtu, 26 September 2026</strong></p>
+            <p>10.00 – 12.00 WIB</p>
+            <p><strong>GKJ Karangbendo</strong></p>
+            <p class="muted">Acara hanya berupa ibadah pemberkatan pernikahan dan <strong>tidak dilanjutkan</strong> dengan resepsi.</p>
+            <a class="secondary-button" href="https://www.google.com/maps/search/?api=1&query=GKJ+Karangbendo" target="_blank" rel="noopener">Buka Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section class="section"><div class="parallax-bg"></div><div class="section-overlay"></div>
-<div class="container reveal"><p class="eyebrow">WEDDING GIFT</p><h2>Wedding Gift</h2>
-<p>Doa restu Anda adalah hadiah terindah bagi kami. Bagi yang ingin memberikan tanda kasih:</p>
-<div class="bank"><span>Bank BCA</span><strong>0374190641</strong><small>a.n. AGUNG KURNIYANTO</small>
-<button id="copyAccount" class="btn">Salin Nomor Rekening</button><em id="copyStatus"></em></div></div></section>
+    <section class="section countdown-section">
+      <div class="section-inner reveal">
+        <p class="eyebrow">Counting Down</p>
+        <h2 class="script section-script">Menuju Hari Bahagia</h2>
+        <div id="countdown" class="countdown-grid" aria-live="polite">
+          <div><strong id="days">00</strong><span>Hari</span></div>
+          <div><strong id="hours">00</strong><span>Jam</span></div>
+          <div><strong id="minutes">00</strong><span>Menit</span></div>
+          <div><strong id="seconds">00</strong><span>Detik</span></div>
+        </div>
+      </div>
+    </section>
 
-<section class="section closing"><div class="parallax-bg"></div><div class="section-overlay"></div>
-<div class="container reveal"><p class="eyebrow">TERIMA KASIH</p><h2 class="script">Agung &amp; Efarna</h2>
-<p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu bagi kami.</p><p>Tuhan Yesus memberkati kita semua.</p></div></section>
-</main>
+    <section class="section gallery-section">
+      <div class="section-inner">
+        <p class="eyebrow reveal">Our Moments</p>
+        <h2 class="script section-script reveal">Gallery</h2>
+        <p class="section-copy reveal">Klik foto untuk memperbesar. Di HP, Anda dapat swipe ke foto berikutnya.</p>
+        <div class="gallery-grid">
+          <button class="gallery-item reveal" type="button" data-index="0"><img src="assets/img/gallery-01.webp" alt="Galeri Agung dan Efarna 1" loading="lazy"></button>
+          <button class="gallery-item reveal" type="button" data-index="1"><img src="assets/img/gallery-02.webp" alt="Galeri Agung dan Efarna 2" loading="lazy"></button>
+          <button class="gallery-item reveal" type="button" data-index="2"><img src="assets/img/gallery-03.webp" alt="Galeri Agung dan Efarna 3" loading="lazy"></button>
+          <button class="gallery-item reveal" type="button" data-index="3"><img src="assets/img/gallery-04.webp" alt="Galeri Agung dan Efarna 4" loading="lazy"></button>
+          <button class="gallery-item reveal" type="button" data-index="4"><img src="assets/img/gallery-05.webp" alt="Galeri Agung dan Efarna 5" loading="lazy"></button>
+          <button class="gallery-item reveal" type="button" data-index="5"><img src="assets/img/gallery-06.webp" alt="Galeri Agung dan Efarna 6" loading="lazy"></button>
+        </div>
+      </div>
+    </section>
 
-<button id="musicButton" class="music">♫</button>
-<audio id="music" loop preload="none"><source src="assets/music/BTS-Euphoria.mp3" type="audio/mpeg"></audio>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="assets/js/config.js"></script>
-<script src="assets/js/script.js"></script>
+    <!--<section class="section story-section">
+      <div class="section-inner reveal">
+        <p class="eyebrow">Our Story</p>
+        <h2 class="script section-script">Love Story</h2>
+        <div class="timeline">
+          <article class="timeline-item"><span>01</span><div><h3>Awal Pertemuan</h3><p>Isi cerita awal pertemuan Agung dan Efar di bagian ini.</p></div></article>
+          <article class="timeline-item"><span>02</span><div><h3>Menjalani Cerita Bersama</h3><p>Isi perjalanan hubungan, momen berkesan, atau cerita singkat kalian di sini.</p></div></article>
+          <article class="timeline-item"><span>03</span><div><h3>Menuju Hari Pernikahan</h3><p>Dengan penyertaan Tuhan dan restu keluarga, kami mempersiapkan langkah baru bersama.</p></div></article>
+        </div>
+      </div>
+    </section>-->
+
+    <section class="section gift-section">
+      <div class="section-inner reveal">
+        <p class="eyebrow">Wedding Gift</p>
+        <h2 class="script section-script">Tanda Kasih</h2>
+        <p class="section-copy">Doa restu Anda merupakan hadiah terindah bagi kami. Apabila berkenan memberikan tanda kasih, dapat disampaikan melalui:</p>
+        <div class="bank-grid">
+          <article class="bank-card">
+            <div class="bank-logo bca-logo">BCA</div>
+            <span class="bank-label">Nomor Rekening</span>
+            <strong id="bcaAccountNumber" class="account-number">0375161678</strong>
+            <span class="account-name">a.n. AGUNG KURNIYANTO</span>
+            <button class="primary-button compact copy-account" data-copy-target="bcaAccountNumber" data-bank="BCA" type="button">Salin Nomor Rekening</button>
+          </article>
+
+          <!--<article class="bank-card">
+            <div class="bank-logo bri-logo">BRI</div>
+            <span class="bank-label">Nomor Rekening</span>
+            <strong id="briAccountNumber" class="account-number account-number-long">307701004651508</strong>
+            <span class="account-name">a.n. AGUNG KURNIYANTO</span>
+            <button class="primary-button compact copy-account" data-copy-target="briAccountNumber" data-bank="BRI" type="button">Salin Nomor Rekening</button>
+          </article>-->
+        </div>
+      </div>
+    </section>
+
+    <section class="section rsvp-section">
+      <div class="section-inner narrow reveal">
+        <p class="eyebrow">RSVP & Wishes</p>
+        <h2 class="script section-script">Ucapan & Konfirmasi</h2>
+        <form id="rsvpForm" class="rsvp-form">
+          <label>Nama<input id="rsvpName" type="text" maxlength="80" required placeholder="Nama Anda"></label>
+          <label>Konfirmasi Kehadiran
+            <select id="attendance" required>
+              <option value="">Pilih salah satu</option>
+              <option value="Hadir">Hadir</option>
+              <option value="Tidak Hadir">Tidak Hadir</option>
+              <option value="Masih Dipertimbangkan">Masih Dipertimbangkan</option>
+            </select>
+          </label>
+          <label>Ucapan<textarea id="message" rows="4" maxlength="500" required placeholder="Tuliskan doa dan ucapan..."></textarea></label>
+          <button class="primary-button" type="submit">Kirim Ucapan</button>
+          <p id="rsvpStatus" class="form-status" role="status"></p>
+        </form>
+        <div class="wishes-wrap">
+          <h3>Ucapan Terbaru</h3>
+          <!-- <p class="wishes-note">Setiap ucapan dapat dibalas melalui tombol <strong>Balas</strong>.</p> -->
+          <div id="wishesList" class="wishes-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section closing-section">
+      <div class="section-inner reveal">
+        <p class="eyebrow">Terima Kasih</p>
+        <h2 class="script section-script">Agung & Efar</h2>
+        <p class="lead-text">Merupakan sukacita dan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa restu bagi kami.</p>
+        <p class="closing-kami">Kami yang berbahagia,</p>
+        <div class="family-signatures">
+          <div class="family-signature">
+            <span>Keluarga Mempelai Pria</span>
+            <strong>Bapak Sumantri</strong>
+            <span>&amp;</span>
+            <strong>Ibu Moeryani</strong>
+          </div>
+          <div class="family-signature">
+            <span>Keluarga Mempelai Wanita</span>
+            <strong>Bapak Y. Sudaryanto Sari Wiyono (†)</strong>
+            <span>&amp;</span>
+            <strong>Ibu Kristania Supani</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button id="musicToggle" class="music-toggle" type="button" aria-label="Nyalakan atau matikan musik" title="Music On/Off">
+    <span id="musicIcon">♫</span>
+  </button>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Galeri foto">
+    <button id="lightboxClose" class="lightbox-close" type="button" aria-label="Tutup">×</button>
+    <button id="lightboxPrev" class="lightbox-nav prev" type="button" aria-label="Foto sebelumnya">‹</button>
+    <figure>
+      <img id="lightboxImage" src="" alt="Foto galeri diperbesar">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+    <button id="lightboxNext" class="lightbox-nav next" type="button" aria-label="Foto berikutnya">›</button>
+  </div>
+
+  <audio id="bgMusic" loop preload="none">
+    <source src="assets/music/wedding-music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/app.js"></script>
 </body>
 </html>

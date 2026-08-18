@@ -1,57 +1,100 @@
-# Undangan Agung & Efarna — GitHub Pages + Supabase
+# Undangan Pernikahan Agung & Efarna — Revisi
+
+Website statis siap upload untuk pernikahan **Agung Kurniyanto & Efarna Distalia Sari**.
 
 ## Fitur
-- Great Vibes untuk seluruh teks "Agung & Efarna"
-- Background adat Jawa di setiap section
-- `?to=Nama+Penerima`
-- Countdown 26 September 2026
+- Nama tamu via `?to=Nama+Tamu`
+- Cover roll-up otomatis saat tombol **Buka Undangan** diklik
+- Background Jawa dari file `assets/img/background-jawa.png` untuk cover dan seluruh content
+- Background **fullscreen anti-crop**: gambar utama selalu `contain` sehingga border/ornamen tidak terpotong; layer blur mengisi sisa layar di tablet/desktop
+- Efek parallax ringan antara background dan content
+- Font **Great Vibes** untuk `Agung & Efarna` dan nama lengkap mempelai
+- Profil mempelai + Instagram masing-masing
+- Countdown ke 26 September 2026, pukul 10.00 WIB
 - Google Maps GKJ Karangbendo
-- RSVP + ucapan tersimpan di Supabase
-- Daftar ucapan dapat dibaca semua tamu
-- Realtime update untuk komentar baru
-- Wedding Gift BCA 0374190641 a.n. AGUNG KURNIYANTO + tombol salin
-- Link sosial media mempelai
-- Parallax effect
-- Cover roll-up setelah Buka Undangan
-- Static hosting, cocok untuk GitHub Pages
+- Galeri responsif + lightbox popup + swipe di HP
+- Wedding Gift BCA dan BRI + tombol salin rekening masing-masing
+- Background music yang mulai setelah interaksi pengguna
+- RSVP, wishes, dan **reply/balas pada setiap komentar** dengan Supabase
+- Fallback localStorage untuk demo jika Supabase belum diisi
+- Responsive HP / tablet / laptop / desktop
 
-## 1. Buat database Supabase
-Buka SQL Editor di project Supabase, lalu jalankan:
-`supabase/schema.sql`
+## Profil Mempelai
+- **Agung Kurniyanto** — Putra kedua dari **Bapak Sumantri & Ibu Moeryani**
+- **Efarna Distalia Sari** — Putri ketiga dari **Bapak Y. Sudaryanto Sari Wiyono (†) & Ibu Kristania Supani**
 
-## 2. Isi konfigurasi
-Buka:
+## Wedding Gift
+- BCA `0374190641` a.n. **AGUNG KURNIYANTO**
+- BRI `307701004651508` a.n. **AGUNG KURNIYANTO**
+
+## Cara Upload
+Upload **seluruh isi folder ini** ke root/public_html server Anda. File utama harus tetap bernama `index.html`.
+
+Contoh link tamu:
+`https://domainanda.com/?to=Mas+Agung+Kurniyanto`
+
+## Ganti Foto
+Ganti file berikut, lalu perbarui `src` di `index.html` bila ekstensi file berubah:
+- `assets/img/agung-placeholder.svg`
+- `assets/img/efarna-placeholder.svg`
+- `assets/img/gallery-01.svg` s.d. `gallery-06.svg`
+
+Rekomendasi:
+- Foto profil: rasio 4:5, minimal 1200x1500 px
+- Galeri: JPG/WebP 1200–2000 px sisi panjang
+- Gunakan WebP agar loading lebih cepat
+
+## Background Fullscreen Anti-Crop
+Background yang digunakan sekarang:
+`assets/img/background-jawa.png`
+
+Sistem background memakai dua layer:
+- **Main layer (`contain`)**: selalu menampilkan 100% gambar tanpa zoom, sehingga bunga, gunungan, batik, dan border tidak terpotong.
+- **Bleed layer (`cover + blur`)**: mengisi ruang kosong saat rasio layar berbeda, terutama pada monitor landscape.
+
+Efek parallax hanya diterapkan pada bleed layer. Main layer tidak digeser atau diperbesar agar border tetap aman.
+
+Jika ingin menggantinya nanti, gunakan nama file yang sama supaya tidak perlu mengubah CSS.
+
+## Ganti / Tambahkan Musik
+Masukkan file MP3 Anda dengan nama:
+`assets/music/wedding-music.mp3`
+
+Browser modern biasanya memblokir autoplay sebelum interaksi. Website ini mulai memutar musik setelah tamu menekan **Buka Undangan**.
+
+## Link Instagram
+Edit file:
 `assets/js/config.js`
 
-Ganti:
-- `url` = Project URL Supabase
-- `key` = Publishable key / anon key
+Isi URL pada:
+- `agungInstagram`
+- `efarnaInstagram`
 
-Jangan pernah memasukkan `service_role`/secret key ke file website.
+Jika dibiarkan `#`, tombol otomatis tampil nonaktif.
 
-Supabase memang menyediakan client JavaScript browser menggunakan Project URL + publishable key/anon key.
+## Aktifkan RSVP + Reply Supabase
+1. Buat / buka project di Supabase.
+2. Buka **SQL Editor**.
+3. Jalankan **seluruh** isi `supabase/schema.sql` versi revisi ini. Jika sebelumnya sudah memakai schema lama, SQL tersebut sekaligus melakukan migrasi untuk fitur reply.
+4. Buka **Project Settings > API**.
+5. Salin Project URL dan anon/public key.
+6. Masukkan ke `assets/js/config.js`:
+   - `supabaseUrl`
+   - `supabaseAnonKey`
+7. Upload ulang file website.
 
-## 3. Social media
-Di `index.html`, ganti `href="#"` pada Instagram/Facebook masing-masing mempelai dengan link akun yang sebenarnya.
+Tanpa Supabase, RSVP dan reply tetap bisa dites tetapi hanya tersimpan pada browser/perangkat yang mengirimkannya.
 
-## 4. Foto
-Masukkan foto ke `assets/images/`, lalu ganti elemen `Foto Mempelai...` dan gallery placeholder di `index.html`.
+## Background 4:3 fullscreen responsive
+Website sekarang memakai **`background-size: cover`** untuk `assets/img/background-jawa.png`. Dengan metode ini background selalu memenuhi viewport HP, tablet, maupun desktop tanpa mengubah rasio gambar. Konsekuensinya, bagian kiri/kanan atau atas/bawah dapat terpotong sesuai rasio layar.
 
-## 5. Musik
-Masukkan MP3 sebagai:
-`assets/music/wedding.mp3`
+Untuk hasil terbaik, gunakan file `background-jawa.png` versi **landscape 4:3**. Bila titik crop perlu digeser, buka `assets/css/style.css` lalu ubah variabel `--bg-x` dan `--bg-y` pada media query HP/tablet/desktop. Nilai `50% 50%` berarti tepat di tengah.
 
-## 6. GitHub Pages
-Upload seluruh isi repository.
-Pastikan `index.html` berada di root.
-GitHub Pages dapat dipublish dari branch dan folder root. Di repository:
-Settings > Pages > Build and deployment > Source: Deploy from a branch > main > /(root) > Save.
+Efek parallax tetap aktif secara ringan. Layer background diberi bleed kecil agar tidak muncul celah saat digeser.
 
-## 7. Contoh link penerima
-`https://USERNAME.github.io/NAMA-REPO/?to=Mas+Agung+Kurniyanto`
 
-## Catatan keamanan
-Publishable/anon key boleh digunakan di browser bila Row Level Security (RLS) dan policy database dikonfigurasi dengan benar. Jangan pernah mengekspos Supabase secret/service_role key.
+## Background fixed 4:3 (revisi terbaru)
 
-## Catatan moderasi
-Versi ini menerima ucapan langsung dari publik. Untuk penggunaan nyata, sebaiknya tambahkan moderasi/anti-spam (mis. CAPTCHA atau approval admin) jika undangan akan dibagikan secara luas.
+Website menggunakan satu `background-jawa.png` fixed melalui `body::before`. Pengaturan utamanya adalah `background-size: cover`, `background-position: center center`, dan `background-repeat: no-repeat`. Dengan demikian gambar selalu memenuhi viewport tanpa berubah rasio. Pada layar dengan rasio berbeda, browser akan melakukan crop otomatis pada bagian tepi. Seluruh `.section` dibuat transparan sehingga content bergerak di atas background tetap, menghasilkan efek parallax sederhana tanpa JavaScript tambahan.
+
+Jika ingin menggeser fokus crop, ubah `background-position` pada `body::before`, misalnya `45% center` atau `55% center`.
