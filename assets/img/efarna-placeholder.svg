@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8c8b2"/><stop offset="1" stop-color="#68796c"/></linearGradient></defs>
+    <rect width="800" height="1000" fill="url(#g)"/>
+    <circle cx="400" cy="345" r="145" fill="#f2e8d8" opacity=".9"/>
+    <path d="M205 840 C230 590 570 590 595 840Z" fill="#2f4036" opacity=".92"/>
+    <path d="M0 820 Q400 690 800 820 V1000 H0Z" fill="#eadfcd" opacity=".75"/>
+    <text x="400" y="895" text-anchor="middle" font-family="Georgia,serif" font-size="54" fill="#2d3b32">Efarna Distalia Sari</text>
+    <text x="400" y="945" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" fill="#54635a">Ganti dengan foto Efarna</text>
+    </svg>

@@ -15,9 +15,9 @@
 
   // Nama penerima dari ?to=Nama+Tamu
   const params = new URLSearchParams(location.search);
-  const guest = (params.get("to") || "Nama Tamu Undangan").replace(/\+/g, " ").trim();
+  const guest = (params.get("to") || "Bapak/Ibu/Saudara/i").replace(/\+/g, " ").trim();
   $("#guestName").textContent = guest;
-  $("#rsvpName").value = guest === "Nama Tamu Undangan" ? "" : guest;
+  $("#rsvpName").value = guest === "Bapak/Ibu/Saudara/i" ? "" : guest;
 
   function showToast(message) {
     toast.textContent = message;
@@ -112,6 +112,42 @@
       await copyText(target.textContent.trim());
       showToast(`Nomor rekening ${button.dataset.bank || "bank"} berhasil disalin`);
     });
+  });
+
+  // Wedding Gift modal
+  const giftModal = $("#giftModal");
+  const giftDialog = $(".gift-modal-dialog", giftModal);
+  const giftOpenButton = $("#openGiftModal");
+  const giftAddress = $("#giftAddress");
+  const copyGiftAddress = $("#copyGiftAddress");
+  let giftLastFocused = null;
+
+  function openGiftModal() {
+    giftLastFocused = document.activeElement;
+    giftModal.classList.add("open");
+    giftModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    requestAnimationFrame(() => giftDialog?.focus());
+  }
+
+  function closeGiftModal() {
+    giftModal.classList.remove("open");
+    giftModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    if (giftLastFocused && typeof giftLastFocused.focus === "function") giftLastFocused.focus();
+  }
+
+  giftOpenButton?.addEventListener("click", openGiftModal);
+  $$("[data-gift-close]", giftModal).forEach(el => el.addEventListener("click", closeGiftModal));
+
+  copyGiftAddress?.addEventListener("click", async () => {
+    if (!giftAddress) return;
+    await copyText(giftAddress.textContent.trim());
+    showToast("Alamat pengiriman hadiah berhasil disalin");
+  });
+
+  addEventListener("keydown", e => {
+    if (e.key === "Escape" && giftModal.classList.contains("open")) closeGiftModal();
   });
 
   // Reveal on scroll
@@ -302,7 +338,7 @@
       replyForm.classList.toggle("open");
       if (replyForm.classList.contains("open")) {
         const replyName = $(".reply-name", replyForm);
-        if (replyName && !replyName.value && guest !== "Nama Tamu Undangan") replyName.value = guest;
+        if (replyName && !replyName.value && guest !== "Bapak/Ibu/Saudara/i") replyName.value = guest;
         replyName?.focus();
       }
       return;
