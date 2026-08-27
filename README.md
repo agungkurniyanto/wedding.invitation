@@ -37,7 +37,7 @@ Catatan: informasi ini tersembunyi secara tampilan, bukan terenkripsi. Data teta
 Upload seluruh isi folder website ke `public_html` atau root domain. File utama harus tetap bernama `index.html`.
 
 Contoh link penerima:
-`https://domainanda.com/?to=Mas+Agung+Kurniyanto`
+`https://agungkurniyanto.github.io/wedding.invitation/?to=Nama%20Tamu%20Undangan`
 
 ## Foto
 Ganti file berikut dengan foto Anda sendiri:
