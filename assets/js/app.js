@@ -2,7 +2,9 @@
   "use strict";
 
   const $ = (selector, root = document) => root.querySelector(selector);
-  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+  const $$ = (selector, root = document) => [
+    ...root.querySelectorAll(selector),
+  ];
   const cfg = window.WEDDING_CONFIG || {};
 
   const cover = $("#cover");
@@ -15,7 +17,9 @@
 
   // Nama penerima dari ?to=Nama+Tamu
   const params = new URLSearchParams(location.search);
-  const guest = (params.get("to") || "Bapak/Ibu/Saudara/i").replace(/\+/g, " ").trim();
+  const guest = (params.get("to") || "Bapak/Ibu/Saudara/i")
+    .replace(/\+/g, " ")
+    .trim();
   $("#guestName").textContent = guest;
   $("#rsvpName").value = guest === "Bapak/Ibu/Saudara/i" ? "" : guest;
 
@@ -35,7 +39,10 @@
     } catch (err) {
       musicToggle.classList.remove("playing");
       musicIcon.textContent = "♪";
-      console.info("Musik belum tersedia atau browser menolak playback:", err.message);
+      console.info(
+        "Musik belum tersedia atau browser menolak playback:",
+        err.message,
+      );
     }
   }
 
@@ -54,7 +61,10 @@
   musicToggle.addEventListener("click", async () => {
     if (music.paused) {
       await startMusic();
-      if (music.paused) showToast("Tambahkan file assets/music/wedding-music.mp3 terlebih dahulu.");
+      if (music.paused)
+        showToast(
+          "Tambahkan file assets/music/wedding-music.mp3 terlebih dahulu.",
+        );
     } else {
       music.pause();
       musicToggle.classList.remove("playing");
@@ -65,9 +75,9 @@
   // Instagram mempelai
   const socialMap = {
     "agung-instagram": cfg.social?.agungInstagram,
-    "efarna-instagram": cfg.social?.efarnaInstagram
+    "efarna-instagram": cfg.social?.efarnaInstagram,
   };
-  $$("[data-social]").forEach(a => {
+  $$("[data-social]").forEach((a) => {
     const url = socialMap[a.dataset.social];
     if (url && url !== "#") a.href = url;
     else {
@@ -78,14 +88,23 @@
   });
 
   // Countdown
-  const weddingDate = new Date(cfg.weddingDate || "2026-09-26T10:00:00+07:00").getTime();
+  const weddingDate = new Date(
+    cfg.weddingDate || "2026-09-26T10:00:00+07:00",
+  ).getTime();
   function updateCountdown() {
     const distance = weddingDate - Date.now();
     const d = Math.max(0, distance);
     $("#days").textContent = String(Math.floor(d / 86400000)).padStart(2, "0");
-    $("#hours").textContent = String(Math.floor((d % 86400000) / 3600000)).padStart(2, "0");
-    $("#minutes").textContent = String(Math.floor((d % 3600000) / 60000)).padStart(2, "0");
-    $("#seconds").textContent = String(Math.floor((d % 60000) / 1000)).padStart(2, "0");
+    $("#hours").textContent = String(
+      Math.floor((d % 86400000) / 3600000),
+    ).padStart(2, "0");
+    $("#minutes").textContent = String(
+      Math.floor((d % 3600000) / 60000),
+    ).padStart(2, "0");
+    $("#seconds").textContent = String(Math.floor((d % 60000) / 1000)).padStart(
+      2,
+      "0",
+    );
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
@@ -105,12 +124,14 @@
       ta.remove();
     }
   }
-  $$(".copy-account").forEach(button => {
+  $$(".copy-account").forEach((button) => {
     button.addEventListener("click", async () => {
       const target = document.getElementById(button.dataset.copyTarget);
       if (!target) return;
       await copyText(target.textContent.trim());
-      showToast(`Nomor rekening ${button.dataset.bank || "bank"} berhasil disalin`);
+      showToast(
+        `Nomor rekening ${button.dataset.bank || "bank"} berhasil disalin`,
+      );
     });
   });
 
@@ -134,11 +155,14 @@
     giftModal.classList.remove("open");
     giftModal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
-    if (giftLastFocused && typeof giftLastFocused.focus === "function") giftLastFocused.focus();
+    if (giftLastFocused && typeof giftLastFocused.focus === "function")
+      giftLastFocused.focus();
   }
 
   giftOpenButton?.addEventListener("click", openGiftModal);
-  $$("[data-gift-close]", giftModal).forEach(el => el.addEventListener("click", closeGiftModal));
+  $$("[data-gift-close]", giftModal).forEach((el) =>
+    el.addEventListener("click", closeGiftModal),
+  );
 
   copyGiftAddress?.addEventListener("click", async () => {
     if (!giftAddress) return;
@@ -146,23 +170,27 @@
     showToast("Alamat pengiriman hadiah berhasil disalin");
   });
 
-  addEventListener("keydown", e => {
-    if (e.key === "Escape" && giftModal.classList.contains("open")) closeGiftModal();
+  addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && giftModal.classList.contains("open"))
+      closeGiftModal();
   });
 
   // Reveal on scroll
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add("visible");
-    });
-  }, { threshold: 0.12 });
-  $$(".reveal").forEach(el => observer.observe(el));
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    },
+    { threshold: 0.12 },
+  );
+  $$(".reveal").forEach((el) => observer.observe(el));
 
   // Background fixed pada body::before memberikan efek parallax sederhana tanpa JavaScript.
 
   // Lightbox gallery
   const galleryButtons = $$(".gallery-item");
-  const galleryImages = galleryButtons.map(btn => $("img", btn));
+  const galleryImages = galleryButtons.map((btn) => $("img", btn));
   const lightbox = $("#lightbox");
   const lightboxImage = $("#lightboxImage");
   const lightboxCaption = $("#lightboxCaption");
@@ -184,12 +212,20 @@
     lightbox.classList.remove("open");
     lightbox.setAttribute("aria-hidden", "true");
   }
-  galleryButtons.forEach((btn, i) => btn.addEventListener("click", () => openLightbox(i)));
+  galleryButtons.forEach((btn, i) =>
+    btn.addEventListener("click", () => openLightbox(i)),
+  );
   $("#lightboxClose").addEventListener("click", closeLightbox);
-  $("#lightboxPrev").addEventListener("click", () => showImage(currentIndex - 1));
-  $("#lightboxNext").addEventListener("click", () => showImage(currentIndex + 1));
-  lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
-  addEventListener("keydown", e => {
+  $("#lightboxPrev").addEventListener("click", () =>
+    showImage(currentIndex - 1),
+  );
+  $("#lightboxNext").addEventListener("click", () =>
+    showImage(currentIndex + 1),
+  );
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  addEventListener("keydown", (e) => {
     if (!lightbox.classList.contains("open")) return;
     if (e.key === "Escape") closeLightbox();
     if (e.key === "ArrowLeft") showImage(currentIndex - 1);
@@ -197,23 +233,47 @@
   });
 
   let touchStartX = 0;
-  lightbox.addEventListener("touchstart", e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
-  lightbox.addEventListener("touchend", e => {
-    const dx = e.changedTouches[0].screenX - touchStartX;
-    if (Math.abs(dx) > 45) showImage(currentIndex + (dx < 0 ? 1 : -1));
-  }, { passive: true });
+  lightbox.addEventListener(
+    "touchstart",
+    (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    },
+    { passive: true },
+  );
+  lightbox.addEventListener(
+    "touchend",
+    (e) => {
+      const dx = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(dx) > 45) showImage(currentIndex + (dx < 0 ? 1 : -1));
+    },
+    { passive: true },
+  );
 
   // RSVP / Wishes + Reply — Supabase bila dikonfigurasi, localStorage sebagai fallback demo.
   const form = $("#rsvpForm");
   const status = $("#rsvpStatus");
   const wishesList = $("#wishesList");
-  const hasSupabase = Boolean(cfg.supabaseUrl && cfg.supabaseAnonKey && window.supabase);
-  const sb = hasSupabase ? window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey) : null;
+  const hasSupabase = Boolean(
+    cfg.supabaseUrl && cfg.supabaseAnonKey && window.supabase,
+  );
+  const sb = hasSupabase
+    ? window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey)
+    : null;
   const storageKey = "agung-efarna-wishes-v2";
   let currentItems = [];
 
   function escapeHTML(value = "") {
-    return String(value).replace(/[&<>'"]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[ch]));
+    return String(value).replace(
+      /[&<>'"]/g,
+      (ch) =>
+        ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          "'": "&#39;",
+          '"': "&quot;",
+        })[ch],
+    );
   }
   function safeId(value) {
     return String(value ?? "").replace(/[^a-zA-Z0-9_-]/g, "-");
@@ -225,26 +285,36 @@
   function buildTree(items) {
     const nodes = new Map();
     const roots = [];
-    items.forEach(item => nodes.set(String(item.id), { ...item, children: [] }));
-    nodes.forEach(node => {
+    items.forEach((item) =>
+      nodes.set(String(item.id), { ...item, children: [] }),
+    );
+    nodes.forEach((node) => {
       const parentKey = node.parent_id == null ? null : String(node.parent_id);
-      if (parentKey && nodes.has(parentKey)) nodes.get(parentKey).children.push(node);
+      if (parentKey && nodes.has(parentKey))
+        nodes.get(parentKey).children.push(node);
       else roots.push(node);
     });
-    const byOldest = (a, b) => new Date(a.created_at || 0) - new Date(b.created_at || 0);
-    const sortChildren = node => {
+    const byOldest = (a, b) =>
+      new Date(a.created_at || 0) - new Date(b.created_at || 0);
+    const sortChildren = (node) => {
       node.children.sort(byOldest);
       node.children.forEach(sortChildren);
     };
-    roots.sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
+    roots.sort(
+      (a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0),
+    );
     roots.forEach(sortChildren);
     return roots;
   }
 
   function renderComment(item, depth = 0) {
     const id = safeId(item.id);
-    const attendance = item.attendance ? `<small>${escapeHTML(item.attendance)}</small>` : `<small>Balasan</small>`;
-    const children = (item.children || []).map(child => renderComment(child, depth + 1)).join("");
+    const attendance = item.attendance
+      ? `<small>${escapeHTML(item.attendance)}</small>`
+      : `<small>Balasan</small>`;
+    const children = (item.children || [])
+      .map((child) => renderComment(child, depth + 1))
+      .join("");
     return `
       <article class="wish-card ${depth ? "is-reply" : ""}" data-comment-id="${id}">
         <div class="wish-head"><strong>${escapeHTML(item.name || "Tamu")}</strong>${attendance}</div>
@@ -268,16 +338,20 @@
   function renderWishes(items) {
     currentItems = items || [];
     if (!currentItems.length) {
-      wishesList.innerHTML = '<div class="empty-state">Belum ada ucapan. Jadilah yang pertama mengirim doa dan ucapan.</div>';
+      wishesList.innerHTML =
+        '<div class="empty-state">Belum ada ucapan. Jadilah yang pertama mengirim doa dan ucapan.</div>';
       return;
     }
     const tree = buildTree(currentItems);
-    wishesList.innerHTML = tree.map(item => renderComment(item)).join("");
+    wishesList.innerHTML = tree.map((item) => renderComment(item)).join("");
   }
 
   function getLocalItems() {
-    try { return JSON.parse(localStorage.getItem(storageKey) || "[]"); }
-    catch { return []; }
+    try {
+      return JSON.parse(localStorage.getItem(storageKey) || "[]");
+    } catch {
+      return [];
+    }
   }
   function setLocalItems(items) {
     localStorage.setItem(storageKey, JSON.stringify(items.slice(0, 200)));
@@ -285,7 +359,8 @@
 
   async function loadWishes() {
     if (sb) {
-      const { data, error } = await sb.from(cfg.supabaseTable || "wedding_wishes")
+      const { data, error } = await sb
+        .from(cfg.supabaseTable || "wedding_wishes")
         .select("id,name,attendance,message,parent_id,created_at")
         .order("created_at", { ascending: false })
         .limit(200);
@@ -295,14 +370,14 @@
     renderWishes(getLocalItems());
   }
 
-  form.addEventListener("submit", async e => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     status.textContent = "Mengirim...";
     const payload = {
       name: $("#rsvpName").value.trim(),
       attendance: $("#attendance").value,
       message: $("#message").value.trim(),
-      parent_id: null
+      parent_id: null,
     };
     if (!payload.name || !payload.attendance || !payload.message) {
       status.textContent = "Mohon lengkapi semua kolom.";
@@ -310,35 +385,47 @@
     }
 
     if (sb) {
-      const { error } = await sb.from(cfg.supabaseTable || "wedding_wishes").insert(payload);
+      const { error } = await sb
+        .from(cfg.supabaseTable || "wedding_wishes")
+        .insert(payload);
       if (error) {
-        status.textContent = "Gagal mengirim. Periksa konfigurasi Supabase dan schema terbaru.";
+        status.textContent =
+          "Gagal mengirim. Periksa konfigurasi Supabase dan schema terbaru.";
         console.error(error);
         return;
       }
     } else {
       const local = getLocalItems();
-      local.unshift({ ...payload, id: createLocalId(), created_at: new Date().toISOString() });
+      local.unshift({
+        ...payload,
+        id: createLocalId(),
+        created_at: new Date().toISOString(),
+      });
       setLocalItems(local);
     }
 
-    status.textContent = sb ? "Terima kasih, ucapan Anda berhasil dikirim." : "Tersimpan di perangkat ini (mode demo). Aktifkan Supabase agar tampil untuk semua tamu.";
+    status.textContent = sb
+      ? "Terima kasih, ucapan Anda berhasil dikirim."
+      : "Tersimpan di perangkat ini (mode demo). Aktifkan Supabase agar tampil untuk semua tamu.";
     $("#message").value = "";
     await loadWishes();
   });
 
   // Event delegation untuk tombol Balas, Batal, dan form reply yang dibuat dinamis.
-  wishesList.addEventListener("click", e => {
+  wishesList.addEventListener("click", (e) => {
     const toggle = e.target.closest(".reply-toggle");
     if (toggle) {
       const card = toggle.closest(".wish-card");
       const replyForm = card ? $(":scope > .reply-form", card) : null;
       if (!replyForm) return;
-      $$(".reply-form.open", wishesList).forEach(f => { if (f !== replyForm) f.classList.remove("open"); });
+      $$(".reply-form.open", wishesList).forEach((f) => {
+        if (f !== replyForm) f.classList.remove("open");
+      });
       replyForm.classList.toggle("open");
       if (replyForm.classList.contains("open")) {
         const replyName = $(".reply-name", replyForm);
-        if (replyName && !replyName.value && guest !== "Bapak/Ibu/Saudara/i") replyName.value = guest;
+        if (replyName && !replyName.value && guest !== "Bapak/Ibu/Saudara/i")
+          replyName.value = guest;
         replyName?.focus();
       }
       return;
@@ -348,7 +435,7 @@
     if (cancel) cancel.closest(".reply-form")?.classList.remove("open");
   });
 
-  wishesList.addEventListener("submit", async e => {
+  wishesList.addEventListener("submit", async (e) => {
     const replyForm = e.target.closest(".reply-form");
     if (!replyForm) return;
     e.preventDefault();
@@ -369,14 +456,17 @@
         replyStatus.textContent = "ID komentar tidak valid.";
         return;
       }
-      const { error } = await sb.from(cfg.supabaseTable || "wedding_wishes").insert({
-        name: replyName,
-        attendance: null,
-        message: replyMessage,
-        parent_id: numericParent
-      });
+      const { error } = await sb
+        .from(cfg.supabaseTable || "wedding_wishes")
+        .insert({
+          name: replyName,
+          attendance: null,
+          message: replyMessage,
+          parent_id: numericParent,
+        });
       if (error) {
-        replyStatus.textContent = "Balasan gagal dikirim. Jalankan schema Supabase terbaru.";
+        replyStatus.textContent =
+          "Balasan gagal dikirim. Jalankan schema Supabase terbaru.";
         console.error(error);
         return;
       }
@@ -388,7 +478,7 @@
         attendance: null,
         message: replyMessage,
         parent_id: parentId,
-        created_at: new Date().toISOString()
+        created_at: new Date().toISOString(),
       });
       setLocalItems(local);
     }
